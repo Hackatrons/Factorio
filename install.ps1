@@ -8,7 +8,7 @@ $TmpPath = Join-Path -Path $RootFolder -ChildPath "installtmp"
 $ServerTcpPort = 27015
 $ServerUdpPort = 34197
 
-function Reload-PathEnv {
+function Refresh-PathEnv {
 	$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
 }
 
@@ -22,7 +22,7 @@ function Install-Dependencies {
         iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
     }
 
-	Reload-PathEnv
+    Refresh-PathEnv
 
     # install docker via chocolately
     cup docker-cli -y
@@ -31,7 +31,7 @@ function Install-Dependencies {
 
     Touch-Folder $TmpPath
 
-	Reload-PathEnv
+    Refresh-PathEnv
 
     # download the open.nat library
     nuget install "Open.Nat" -OutputDirectory $TmpPath
