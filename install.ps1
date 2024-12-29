@@ -1,5 +1,5 @@
 # location to install the server to
-$RootFolder = "c:\factorio"
+$RootFolder = "D:\docker\factorio"
 
 $ServerPath = Join-Path -Path $RootFolder -ChildPath "server"
 $TmpPath = Join-Path -Path $RootFolder -ChildPath "installtmp"
@@ -25,9 +25,9 @@ function Install-Dependencies {
     Refresh-PathEnv
 
     # install docker via chocolately
-    cup docker-cli -y
-    cup docker-desktop -y
-    cup nuget.commandline
+    choco install docker-cli -y
+    choco install docker-desktop -y
+    choco install nuget.commandline
 
     Touch-Folder $TmpPath
 
