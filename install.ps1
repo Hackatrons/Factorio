@@ -56,7 +56,7 @@ function Install-FactorioServer {
 
     # start the container
     # note that the internal ports are hard coded as the factorio defaults, but the external ports are configurable
-    $cmd = "docker run -d -p 34197:${ServerUdpPort}/udp -p 27015:${ServerTcpPort}/tcp -v ${ServerPath}:/factorio --name factorio --restart=always factoriotools/factorio"
+    $cmd = "docker run -d -p 34197:${ServerUdpPort}/udp -p 27015:${ServerTcpPort}/tcp -v ${ServerPath}:/factorio --name factorio --restart=always factoriotools/factorio:stable"
     iex $cmd
 }
 
